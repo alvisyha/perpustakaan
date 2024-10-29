@@ -55,25 +55,37 @@ class StudentController extends Controller
             'name' => 'required',
             'nisn' => 'required',
             'class' => 'required',
-            'type-class' => 'required',
+            
         ]);
         // Menghitung tahun kelulusan berdasarkan kelas
         $name = $validated['name'];
         $nisn = $validated['nisn'];
         $class = $validated['class'];
-        $type_class = $validated['type-class'];
+        //$type_class = $validated['type-class'];
 
         $nowYear = Carbon::now()->year;
         $graduation = null;
 
-        if($request->class == '10')
+        if($request->class == '1')
+        {
+            $graduation = $nowYear + 6;
+        }elseif($request->class == '2')
+        {
+            $graduation = $nowYear + 5;
+        }
+        elseif($request->class == '3')
+        {
+            $graduation = $nowYear + 4;
+        }
+        elseif($request->class == '4')
         {
             $graduation = $nowYear + 3;
-        }elseif($request->class == '11')
+        }
+        elseif($request->class == '5')
         {
             $graduation = $nowYear + 2;
         }
-        elseif($request->class == '12')
+        elseif($request->class == '6')
         {
             $graduation = $nowYear + 1;
         }
@@ -81,7 +93,7 @@ class StudentController extends Controller
         Student::create([
             'name' => $name,
             'nisn' => $nisn,
-            'class' => $class . $type_class ,
+            'class' => $class ,
             'graduation' => $graduation,
         ]);    
 
@@ -138,7 +150,8 @@ class StudentController extends Controller
             return Student::create([
                 'name' => $line['nama'],
                 'nisn' => $line['nisn'],
-                'class' => $line['kelas']
+                'class' => $line['kelas'],
+                'graduation' => $line['lulus']
             ]);
         });
 

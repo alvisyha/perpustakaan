@@ -24,13 +24,17 @@
                         <div class="mb-3">
                             <label for="class" class="form-label">Kelas</label>
                             <div class="d-flex col-4">
-                                <select name="class" id="type-class" class="px-1 me-2 rounded" required>
+                                <select name="class" id="type-class" class="px-1 me-2 rounded form-control" required>
                                     <option value="">Pilih Kelas</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+
                                 </select>
-                                <input required type="text" name="type-class" class="form-control" id="class">
+                                {{-- <input required type="text" name="type-class" class="form-control" id="class"> --}}
                             </div>
                         </div>
                     </div>
